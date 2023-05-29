@@ -1,22 +1,25 @@
 import { Schema, model, models, Types } from 'mongoose';
 
-const productSchema = new Schema({
+const productSchema = new Schema(
+  {
     title: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     description: {
-        type: String,
+      type: String,
     },
     price: {
-        type: Number,
-        required: true 
+      type: Number,
+      required: true,
     },
     category: {
-        type: Types.ObjectId,
-        ref: 'Category'
+      type: Types.ObjectId,
+      ref: "Category",
     },
-    properties: {type: Object}
-})
+    properties: { type: Object },
+  },
+  { timestamps: true }
+);
 
 export const Product = models.Product || model('Product', productSchema);
